@@ -22,4 +22,4 @@
             Footer
         }
     }
-</script>s
+</script>

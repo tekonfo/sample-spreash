@@ -21,6 +21,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // 会員登録
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 
+// test
+Route::post('/register/test', 'Auth\RegisterController@test');
+
+Route::get('/register/test', 'Auth\RegisterController@tesddt');
+
 // ログイン
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 

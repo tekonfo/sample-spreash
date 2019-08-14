@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request; // ★ 追加
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -52,7 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'confirmed'],
         ]);
     }
 
@@ -64,6 +65,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        Log::info($data);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -74,6 +77,12 @@ class RegisterController extends Controller
     // ★ メソッド追加
     protected function registered(Request $request, $user)
     {
+        Log::info($user);
+
         return $user;
+    }
+
+    public function test(){
+        return "111";
     }
 }
