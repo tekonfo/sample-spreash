@@ -13,6 +13,8 @@ class Photo extends Model
     /** IDの桁数 */
     const ID_LENGTH = 12;
 
+    protected $perPage = 15; // この値を少なくすれば動作確認しやすいですね
+
     /** JSONに含める属性 */
     protected $visible = [
         'id', 'owner', 'url',
