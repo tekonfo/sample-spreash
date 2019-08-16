@@ -2463,9 +2463,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2477,9 +2474,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       photo: null,
+      fullWidth: false,
       commentContent: '',
       commentErrors: null
     };
+  },
+  computed: {
+    isLogin: function isLogin() {
+      return this.$store.getters['auth/check'];
+    }
   },
   methods: {
     fetchPhoto: function () {
@@ -2548,9 +2551,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 6:
-                this.commentContent = ''; // エラーメッセージをクリア
-
-                this.commentErrors = null; // その他のエラー
+                this.commentContent = '';
+                this.commentErrors = null;
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__["CREATED"])) {
                   _context2.next = 11;
@@ -2606,11 +2608,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return handler;
       }(),
       immediate: true
-    }
-  },
-  computed: {
-    isLogin: function isLogin() {
-      return this.$store.getters['auth/check'];
     }
   }
 });
@@ -4834,99 +4831,99 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _vm._m(1)
-          ]),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm.photo.comments.length > 0
-            ? _c(
-                "ul",
-                { staticClass: "photo-detail__comments" },
-                _vm._l(_vm.photo.comments, function(comment) {
-                  return _c(
-                    "li",
-                    {
-                      key: comment.content,
-                      staticClass: "photo-detail__commentItem"
-                    },
-                    [
-                      _c("p", { staticClass: "photo-detail__commentBody" }, [
-                        _vm._v(
-                          "\n                " +
-                            _vm._s(comment.content) +
-                            "\n            "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "photo-detail__commentInfo" }, [
-                        _vm._v(
-                          "\n                " +
-                            _vm._s(comment.author.name) +
-                            "\n            "
-                        )
-                      ])
-                    ]
-                  )
-                }),
-                0
-              )
-            : _c("p", [_vm._v("No comments yet.")]),
-          _vm._v(" "),
-          _vm.isLogin
-            ? _c(
-                "form",
-                {
-                  staticClass: "form",
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.addComment($event)
-                    }
-                  }
-                },
-                [
-                  _vm.commentErrors
-                    ? _c("div", { staticClass: "errors" }, [
-                        _vm.commentErrors.content
-                          ? _c(
-                              "ul",
-                              _vm._l(_vm.commentErrors.content, function(msg) {
-                                return _c("li", { key: msg }, [
-                                  _vm._v(_vm._s(msg))
-                                ])
-                              }),
-                              0
-                            )
-                          : _vm._e()
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("textarea", {
-                    directives: [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm.photo.comments.length > 0
+              ? _c(
+                  "ul",
+                  { staticClass: "photo-detail__comments" },
+                  _vm._l(_vm.photo.comments, function(comment) {
+                    return _c(
+                      "li",
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.commentContent,
-                        expression: "commentContent"
-                      }
-                    ],
-                    staticClass: "form__item",
-                    domProps: { value: _vm.commentContent },
+                        key: comment.content,
+                        staticClass: "photo-detail__commentItem"
+                      },
+                      [
+                        _c("p", { staticClass: "photo-detail__commentBody" }, [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(comment.content) +
+                              "\n                "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "photo-detail__commentInfo" }, [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(comment.author.name) +
+                              "\n                "
+                          )
+                        ])
+                      ]
+                    )
+                  }),
+                  0
+                )
+              : _c("p", [_vm._v("No comments yet.")]),
+            _vm._v(" "),
+            _vm.isLogin
+              ? _c(
+                  "form",
+                  {
+                    staticClass: "form",
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.commentContent = $event.target.value
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.addComment($event)
                       }
                     }
-                  }),
-                  _vm._v(" "),
-                  _vm._m(3)
-                ]
-              )
-            : _vm._e()
+                  },
+                  [
+                    _vm.commentErrors
+                      ? _c("div", { staticClass: "errors" }, [
+                          _vm.commentErrors.content
+                            ? _c(
+                                "ul",
+                                _vm._l(_vm.commentErrors.content, function(
+                                  msg
+                                ) {
+                                  return _c("li", { key: msg }, [
+                                    _vm._v(_vm._s(msg))
+                                  ])
+                                }),
+                                0
+                              )
+                            : _vm._e()
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.commentContent,
+                          expression: "commentContent"
+                        }
+                      ],
+                      staticClass: "form__item",
+                      domProps: { value: _vm.commentContent },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.commentContent = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(2)
+                  ]
+                )
+              : _vm._e()
+          ])
         ]
       )
     : _vm._e()
@@ -4949,15 +4946,6 @@ var staticRenderFns = [
     return _c("h2", { staticClass: "photo-detail__title" }, [
       _c("i", { staticClass: "icon ion-md-chatboxes" }),
       _vm._v("Comments\n        ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h2", { staticClass: "photo-detail__title" }, [
-      _c("i", { staticClass: "icon ion-md-chatboxes" }),
-      _vm._v("Comments\n    ")
     ])
   },
   function() {
