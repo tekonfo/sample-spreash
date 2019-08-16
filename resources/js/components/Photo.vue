@@ -4,7 +4,7 @@
             <img
                 class="photo__image"
                 :class="imageClass"
-                :src="item.filepath"
+                :src="item.url"
                 :alt="`Photo by ${item.owner.name}`"
                 @load="setAspectRatio"
                 ref="image"

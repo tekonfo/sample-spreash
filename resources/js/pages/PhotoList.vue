@@ -8,8 +8,8 @@
                 :item="photo"
             />
         </div>
+        <Pagination :current-page="currentPage" :last-page="lastPage" />
     </div>
-    <Pagination :current-page="currentPage" :last-page="lastPage" />
 </template>
 
 <script>
