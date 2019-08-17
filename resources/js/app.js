@@ -1,5 +1,11 @@
 import './bootstrap'
 import Vue from 'vue'
+// Vuetify
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css';
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+Vue.use(Vuetify);
+
 // ルーティングの定義をインポートする
 import router from './router'
 // ルートコンポーネントをインポートする
@@ -11,6 +17,7 @@ const createApp = async () => {
 
     new Vue({
         el: '#app',
+        vuetify: new Vuetify(),
         router,
         store,
         components: { App },
